@@ -42,6 +42,30 @@ class TableOperations
       $sql= $id ? "SELECT * FROM $this->table where id=$id ": "SELECT * FROM $this->table";
       return $this->conn->query($sql);
 	}
+
+public function checkDuplicate($conditions, $excludeId = null, $operator = 'AND') {
+    $conditionStrings = [];
+    foreach ($conditions as $column => $value) {
+        $conditionStrings[] = "$column = '$value'";
+    }
+    
+    // Use the specified operator (AND/OR) to join conditions
+    $conditionString = implode(" $operator ", $conditionStrings);
+
+    $sql = "SELECT COUNT(*) as count FROM $this->table WHERE ($conditionString)";
+    
+    if ($excludeId) {
+        $sql .= " AND id != $excludeId";
+    }
+
+
+    $result = $this->conn->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['count'] > 0;
+}
+
+
+
 }
 
 ?>

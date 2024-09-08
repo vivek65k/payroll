@@ -43,10 +43,11 @@ $('form[id^="editForm"]').submit(function(e){
  		alert("Record updated successully");
  		location.reload();
  	}else{
- 		alert("Failed to update record");
+ 		alert(response.message);
  	}
  });
 })
+
 
 $('form[id^="passwordForm"]').submit(function(e){
   e.preventDefault();
@@ -57,20 +58,20 @@ $('form[id^="passwordForm"]').submit(function(e){
 	 listAll.forEach(function(field){
 	 	formData[field.name]=field.value;
 	 })
-	 
-	 if (formData['password'].length < 6) {
-    alert("The password must be at least 6 characters long.");
-    return false;
-   }
-
-	 if(formData['password'] != formData['cpassword']){
-	 	alert("The password and confirmation password do not match.");
-	 	return false;
-	 }
 	
+	if(formData['password'].length<6){
+		alert("The password must be at least 6 characters long.");
+		return false;
+	}
+
+	if(formData['password'] != formData['cpassword']){
+		alert("The password and confirmation password do not match.");
+		return false;
+	}
+
  sendAjaxRequest('change_password',formData,function(response){
  	if(response.success){
- 		alert("Password changed successfully.");
+ 		alert("Password changed successully");
  		location.reload();
  	}else{
  		alert("Failed to update Password");
@@ -87,12 +88,14 @@ $("#addForm").submit(function(e){
 	 listAll.forEach(function(field){
 	 	formData[field.name]=field.value;
 	 })
+
+
  sendAjaxRequest('add',formData,function(response){
  	if(response.success){
  		alert("Record added successully");
  		location.reload();
  	}else{
- 		alert("Failed to add record");
+ 	 alert(response.message);
  	}
  });
 

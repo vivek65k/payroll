@@ -105,15 +105,14 @@ include($app_path.'includes/sidebar.php');
                 <td><?php echo $row['status']; ?></td>
                 <td><?php echo $row['created_at']; ?></td>
                 <td>
-                  <button class="btn btn-warning passwordchange" aria-hidden="true" data-toggle="modal" data-target="#passwordModal<?php echo $row['id']; ?>" data-id="<?php echo $row['id']; ?>"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Password</button>
+                <button type="button" class="btn btn-warning" aria-hidden="true" data-toggle="modal" data-target="#passwordModal<?php echo $row['id']; ?>"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Password</button>
 
                     <button type="button" class="btn btn-success" aria-hidden="true" data-toggle="modal" data-target="#editModal<?php echo $row['id']; ?>"><i class="fa fa-pencil-square-o" ></i> Edit</button>
                     <button class="btn btn-danger deletebutton" data-id="<?php echo $row['id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                 </td>
             </tr>
-                  <!-- //password Model -->
-
-                    <div class="modal fade" id="passwordModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Password Modal -->
+                <div class="modal fade" id="passwordModal<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog  modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -131,10 +130,9 @@ include($app_path.'includes/sidebar.php');
                                     </div>
                                     <div class="form-group">
                                       <label>Confirm Password</label>
-                                      <input type="password" name="cpassword"class="form-control">                                       
-                                    </div>   
-
-                     
+                                      <input type="password" name="cpassword" class="form-control">                                       
+                                    </div>        
+                  
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Change Password</button>
                              </form>
                           </div>
