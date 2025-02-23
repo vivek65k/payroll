@@ -12,7 +12,8 @@ $(document).ready(function(){
  	})
  }
 
-$('.deletebutton').click(function(){
+$(document).on('click', '.deletebutton', function () {
+
 	var id=$(this).data('id');
 	
 	if(confirm('Are you sure you want to delete this record?')){

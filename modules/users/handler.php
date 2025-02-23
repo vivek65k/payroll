@@ -8,13 +8,15 @@ $action =$_POST['action'];
 
 switch ($action) {
 	case 'add':
-
-	     $conditions = ['username' => $_POST['username']];
-        if ($tableOperations->checkDuplicate($conditions,null,'OR')) {
-            echo json_encode(['success' => false, 'message' => 'Username already exists']);
-            exit;
-        }
-
+	     $conditions=[
+           'username'=>$_POST['username'],
+           'email'=>$_POST['email']
+	     ];
+	     if($tableOperations->checkDuplicate($conditions,null,'OR')){
+	      	echo json_encode(['success'=>false,'message'=>"User Already Exists"]);
+	       	exit;
+	     }
+	     
 		 $data=[
 		 	 'name'=>$_POST['name'],
 		 	 'username'=>$_POST['username'],
@@ -28,14 +30,17 @@ switch ($action) {
 	case 'update':
 	    $id=$_POST['id'];
 
-        $conditions = [
-        	'username' => $_POST['username'],
-        	'email'=> $_POST['email']
-        ];
-        if ($tableOperations->checkDuplicate($conditions, $id,'OR')) {
-            echo json_encode(['success' => false, 'message' => 'Username already exists']);
-            exit;
-        }
+	      $conditions=[
+           'username'=>$_POST['username'],
+           'email'=>$_POST['email']
+	     ];
+	     
+	     if($tableOperations->checkDuplicate($conditions,$id,'OR')){
+
+	     	echo json_encode(['success'=>false,'message'=>"User Already Exists"]);
+	     	exit;
+	     }
+
 		$data=[
 		 	 'name'=>$_POST['name'],
 		 	 'username'=>$_POST['username'],
