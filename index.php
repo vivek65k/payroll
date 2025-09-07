@@ -4,14 +4,14 @@ session_start();
 include('db/config.php');
 $error="";
 if(isset($_POST['login'])){
-	echo $username=$_POST['username'];
-	 echo $password= md5($_POST['password']);
+	 $username=$_POST['username'];
+	  $password= md5($_POST['password']);
 
 	$query=  mysqli_query($conn,"select * from admin where username='".$username."'  and password='".$password."'");
 	$run= mysqli_num_rows($query);
 	if($run>0){
 		$_SESSION['username']=$username;
-        header('location:dashboard.php');
+    header('location:dashboard.php');
 	}else{
 		$error="Username or Password went wrong";
 	}

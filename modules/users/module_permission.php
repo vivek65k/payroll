@@ -49,22 +49,15 @@ include($app_path.'includes/sidebar.php');
                                       <input type="email" name="email" class="form-control">                                        
                                     </div>
 
-
                                     <div class="form-group">
                                       <label>Role</label>
                                       <select class="form-control" name="role" >
                                           <option selected disabled >Select Role</option>
-                                           <?php 
-                                              $sql= "select * from roles";
-                                              $run= mysqli_query($conn,$sql);
-                                              while($row=mysqli_fetch_array($run)) {                
-                                            
-                                            ?>
-                                          <option value="<?php echo $row['id'];?>"><?php echo $row['role'];?></option>
-                                        <?php } ?>
+                                          <option value="Admin">Admin</option>
+                                          <option value="Manager">Manager</option>
+                                          <option value="User">User</option>
                                       </select>                                     
                                     </div>
-
                                     <div class="form-group">
                                       <label> Status</label>
                                         <select class="form-control"  name="status">
@@ -92,7 +85,6 @@ include($app_path.'includes/sidebar.php');
        <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>
@@ -104,13 +96,12 @@ include($app_path.'includes/sidebar.php');
         </thead>
         <tbody>
             <?php 
-              $sql= "select am.created_at, am.name,am.username,am.email,am.id,am.status,rs.role , am.role as role_id from admin am left join roles rs on am.role=rs.id;";
+              $sql= "select * from admin";
               $run= mysqli_query($conn,$sql);
               while($row=mysqli_fetch_array($run)) {                 
             
             ?>
             <tr>
-               <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['username']; ?></td>
                 <td><?php echo $row['email']; ?></td>
@@ -185,21 +176,10 @@ include($app_path.'includes/sidebar.php');
 
                                     <div class="form-group">
                                       <label>Role</label>
-                                      <select class="form-control" name="role" >
-
-
-                                          <?php 
-                                              $roleRun= mysqli_query($conn, "select * from roles");
-                                              while($role=mysqli_fetch_array($roleRun)) { 
-
-                                               $isSelected="";               
-                                               if($role['id']==$row['role_id']){
-                                                  $isSelected="selected";          
-                                               }
-                                            ?>
-                                          <option value="<?php echo $role['id'];?>" <?php echo $isSelected; ?>><?php echo $role['role'];?></option>
-                                        <?php } ?>
-
+                                      <select class="form-control" name="role" >                                         
+                                          <option <?php echo $row['role']=='Admin'?'selected':''; ?> value="Admin">Admin</option>
+                                          <option <?php echo $row['role']=='Manager'?'selected':''; ?> value="Manager">Manager</option>
+                                          <option <?php echo $row['role']=='User'?'selected':''; ?> value="User">User</option>
                                       </select>                                     
                                     </div>
                                     <div class="form-group">
@@ -224,7 +204,6 @@ include($app_path.'includes/sidebar.php');
         </tbody>
         <tfoot>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
  function sendAjaxRequest(action, data, callback){
  	$.ajax({
- 		url:'handler.php',
+ 		url:'role/handler.php',
  		type:'POST',
  		data:{action:action,...data},
  		dataType:'json',
@@ -36,7 +36,16 @@ $('form[id^="editForm"]').submit(function(e){
 
   var listAll= $(this).serializeArray();
 	 listAll.forEach(function(field){
-	 	formData[field.name]=field.value;
+    if(formData[field.name]){
+    		if(Array.isArray(formData[field.name])){	 			 
+			 		formData[field.name].push(field.value);
+			 	}else{
+			 		formData[field.name]= [formData[field.name],field.value]			 	
+	 		}
+    }else{
+    	formData[field.name]=field.value;
+    }
+
 	 })
 	
  sendAjaxRequest('update',formData,function(response){
@@ -49,35 +58,6 @@ $('form[id^="editForm"]').submit(function(e){
  });
 })
 
-$('form[id^="passwordForm"]').submit(function(e){
-  e.preventDefault();
-  var formId=$(this).attr('id');
-  var formData={};
-
-  var listAll= $(this).serializeArray();
-	 listAll.forEach(function(field){
-	 	formData[field.name]=field.value;
-	 })
-	
-	if(formData['password'].length<6){
-		alert("The password must be at least 6 characters long.");
-		return false;
-	}
-
-	if(formData['password'] != formData['cpassword']){
-		alert("The password and confirmation password do not match.");
-		return false;
-	}
-
- sendAjaxRequest('change_password',formData,function(response){
- 	if(response.success){
- 		alert("Password changed successully");
- 		location.reload();
- 	}else{
- 		alert("Failed to update Password");
- 	}
- });
-})
 
 
 $("#addForm").submit(function(e){
@@ -86,7 +66,16 @@ $("#addForm").submit(function(e){
   var listAll= $(this).serializeArray();
   var formData={};
 	 listAll.forEach(function(field){
-	 	formData[field.name]=field.value;
+    if(formData[field.name]){
+    		if(Array.isArray(formData[field.name])){	 			 
+			 		formData[field.name].push(field.value);
+			 	}else{
+			 		formData[field.name]= [formData[field.name],field.value]			 	
+	 		}
+    }else{
+    	formData[field.name]=field.value;
+    }
+
 	 })
  sendAjaxRequest('add',formData,function(response){
  	if(response.success){

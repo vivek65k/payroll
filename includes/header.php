@@ -10,7 +10,7 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
+        <div class="nav-header  navbar-dark bg-primary">
             <div class="brand-logo">
                 <a href="<?php echo $base_url;?>dashboard.php">
                     <b class="logo-abbr"><img src="<?php echo $base_url;?>images/logo.png" alt=""> </b>
@@ -28,31 +28,31 @@
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">    
+        <div class="header header-dark bg-primary">    
             <div class="header-content clearfix">
                 
                 <div class="nav-control">
                     <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                        <span class="toggle-icon text-white"><i class="icon-menu"></i></span>
                     </div>
                 </div>
                 <div class="header-left">
                     <div class="input-group icons">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                        </div>
-                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                        <div class="drop-down animated flipInX d-md-none">
+<!--                         <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify text-white"></i></span>
+                        </div> -->
+                        <!-- <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard"> -->
+    <!--                     <div class="drop-down animated flipInX d-md-none">
                             <form action="#">
                                 <input type="text" class="form-control" placeholder="Search">
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                                <i class="mdi mdi-email-outline"></i>
+                                <i class="mdi mdi-email-outline text-white"></i>
                                 <span class="badge badge-pill gradient-1">3</span>
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu">
@@ -110,7 +110,7 @@
                             </div>
                         </li>
                         <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                                <i class="mdi mdi-bell-outline"></i>
+                                <i class="mdi mdi-bell-outline text-white"></i>
                                 <span class="badge badge-pill gradient-2">3</span>
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
@@ -164,10 +164,10 @@
                             </div>
                         </li>
                         <li class="icons dropdown d-none d-md-flex">
-                            <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
-                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                            <a href="javascript:void(0)" class="log-user text-white"  data-toggle="dropdown">
+                                <span>English</span>  <i class="fa fa-angle-down f-s-14 text-white" aria-hidden="true"></i>
                             </a>
-                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
+                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu text-white">
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li><a href="javascript:void()">English</a></li>
